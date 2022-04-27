@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-style: dashed;
+  border-color: green;
+}
+
+nav div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

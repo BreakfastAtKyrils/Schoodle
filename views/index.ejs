@@ -2,19 +2,58 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Schoodle</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
+<nav>
+  <div id="logo-name">
+    <button>logo</button>
+    <h1> Schoodle</h1>
+  </div>
+  <div id="create-event-button">
+  <button>create</button>
+    <h1>create event</h1>
+  </div>
+</nav>
+<main id="creation-page">
+  <h1>Event creation content 🥔</h1>
+  <title>Create Group Event</title>
+  <div id="name">Name</div>
+  <textarea></textarea>
+  <div id="email">Email</div>
+  <textarea></textarea>
+  <div id="event-title">Event Title</div>
+  <textarea></textarea>
+  <div id="description">Description</div>
+  <textarea></textarea>
+  <div id="times">
+    <section id="calendar">
+      <button>Choose your Time and Date</button>
+      <div>Calendar will appear here</div>
+    </section>
+    <section id="meeting-times">
+      <div>Possible Meeting Times will appear here</div>
+    </section>
+  </div>
 
-<body>
-  <h1>Have fun! 🥔</h1>
-</body>
+  <div id="share">Share with your friends!</div>
+  <button>CREATE EVENT</button>
+</main>
+<main id="attendee-page">
+  <h1>Attendee content 🥔</h1>
+</main>
 
 </html>
