@@ -1,6 +1,8 @@
 LHL Node Skeleton
 =========
 
+Schoodle is a scheduling app that allows you and your friends to organize events much easier! 
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
