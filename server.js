@@ -43,6 +43,11 @@ const widgetsRoutes = require("./routes/widgets");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
+const createRoutes = require('./routes/create.js');
+app.use('/create', createRoutes(db));
+
+const eventRoutes = require('./routes/events');
+app.use('/events', eventRoutes(db))
 
 // Home page
 // Warning: avoid creating more routes in this file!
