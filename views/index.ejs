@@ -11,68 +11,74 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
-<nav>
-  <div id="logo-name">
-    <button>logo</button>
-    <h1> Schoodle</h1>
-  </div>
-  <div id="create-event-button">
-  <button>create</button>
-    <h1>create event</h1>
-  </div>
-</nav>
-<main id="creation-page">
-  <title>Create Group Event</title>
-  <div id="name">Name</div>
-  <textarea></textarea>
-  <div id="email">Email</div>
-  <textarea></textarea>
-  <div id="event-title">Event Title</div>
-  <textarea></textarea>
-  <div id="description">Description</div>
-  <textarea></textarea>
-  <div id="times">
-    <section id="calendar">
-      <button>Choose your Time and Date</button>
-      <div>Calendar will appear here</div>
-    </section>
-    <section id="meeting-times">
-      <div>Possible Meeting Times will appear here</div>
-    </section>
-  </div>
-
-  <div id="share">Share with your friends!</div>
-  <button>CREATE EVENT</button>
-</main>
-<main id="attendee-page">
-<section id="event-info">
-    <title>Event Title Goes here</title>
-    <div>Created By: creator-name-goes-here</div>
-    <div>Description: event-description-goes-here</div>
-  </section>
-  <section id="attendee-response">
-    <header>
+<body>
+  <nav>
+    <div id="logo-name">
+      <button>logo</button>
+      <h1> Schoodle</h1>
+    </div>
+    <div id="create-event-button">
+      <img src="../public/images/Event-Icon.png">
+      <h1>create event</h1>
+    </div>
+  </nav>
+  <main id="creation-page">
+    <div id="create-group event">Create Group Event</div>
+    <section>
       <div id="name">Name</div>
       <textarea></textarea>
       <div id="email">Email</div>
       <textarea></textarea>
-      <button>checkbox for notification</button>
-    </header>
-    <footer>
-      When can you attend?
-      <div>Time Choices will go here</div>
-      <button>SUBMIT</button>
-    </footer>
+      <div id="event-title">Event Title</div>
+      <textarea></textarea>
+      <div id="description">Description</div>
+      <textarea></textarea>
+    </section>
 
-  </section>
+    <div id="times">
+      <section id="calendar">
+        <button>Choose your Time and Date</button>
+        <div>Calendar will appear here</div>
+      </section>
+      <section id="meeting-times">
+        <div>Possible Meeting Times will appear here</div>
+      </section>
+    </div>
 
-</main>
+    <div id="share">Share with your friends!</div>
+    <button>CREATE EVENT</button>
+  </main>
+  <main id="attendee-page">
+  <section id="event-info">
+      <title>Event Title Goes here</title>
+      <div>Created By: creator-name-goes-here</div>
+      <div>Description: event-description-goes-here</div>
+    </section>
+    <section id="attendee-response">
+      <header>
+        <div id="name">Name</div>
+        <textarea></textarea>
+        <div id="email">Email</div>
+        <textarea></textarea>
+        <button>checkbox for notification</button>
+      </header>
+      <footer>
+        When can you attend?
+        <div>Time Choices will go here</div>
+        <button>SUBMIT</button>
+      </footer>
+
+    </section>
+
+  </main>
+
+</body>
 
 </html>

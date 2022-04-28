@@ -4,10 +4,24 @@ nav {
   justify-content: space-between;
   border-style: dashed;
   border-color: green;
+  background-color: white;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  font-family: 'Lato', cursive;
 }
 
 nav div {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#logo-name {
+  color:#F17896
+}
+
+#create-event-button {
+  color: #C2E4D5
 }
