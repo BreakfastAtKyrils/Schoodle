@@ -2,8 +2,6 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-style: dashed;
-  border-color: green;
   background-color: white;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -24,4 +22,5 @@ nav div {
 
 #create-event-button {
   color: #C2E4D5
+
 }
