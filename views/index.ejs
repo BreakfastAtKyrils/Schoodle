@@ -36,14 +36,40 @@
 
     <!-- <img id="separator" src="/images/separator.png"> -->
     <section>
-      <div id="name">Name</div>
-      <textarea></textarea>
-      <div id="email">Email</div>
-      <textarea></textarea>
-      <div id="event-title">Event Title</div>
-      <textarea></textarea>
-      <div id="description">Description</div>
-      <textarea></textarea>
+    <form class="form" action="/create" method="POST">
+          <div class="form">
+            <label for="name">Name</label>
+            <textarea
+              class="form-control"
+              type="text"
+              name="name"
+            ></textarea>
+          </div>
+          <div class="form">
+            <label for="email"> Email</label>
+            <textarea
+              class="form-control"
+              type="text"
+              name="email"
+            ></textarea>
+          </div>
+          <div class="form">
+            <label for="title">Event Title</label>
+            <textarea
+              class="form-control"
+              type="text"
+              name="title"
+            ></textarea>
+          </div>
+          <div class="form">
+            <label for="description">Description</label>
+            <textarea
+            class="form-control"
+            type="text"
+            name="description"
+            >
+            </textarea>
+          </div>
     </section>
 
     <div id="times">
@@ -57,7 +83,8 @@
     </div>
 
     <div id="share">Share with your friends!</div>
-    <button>CREATE EVENT</button>
+    <button type="submit">CREATE EVENT</button>
+  </form>
   </main>
   <main id="attendee-page">
   <section id="event-info">

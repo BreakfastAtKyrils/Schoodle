@@ -33,7 +33,7 @@ module.exports = (db) => {
                 res.send({error: "error"});
                 return;
               }
-              res.redirect(`/index/${gen_id}`)
+              res.redirect(`/events/${gen_id}`)
             })
             .catch(err => console.log(err.message))
       }else{
@@ -61,7 +61,7 @@ module.exports = (db) => {
                   res.send({error: "error"});
                   return;
                 }
-                res.json({url : `/index/${gen_id}`});
+                res.redirect(`/events/${gen_id}`)
               })
               .catch(err => console.log(err.message))
           })

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Share URL?/Confirm attendance Page</title>
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <h1>EVENTS</h1>
+  <main>
+    <div><h1><%=title %></h1></div></br></br>
+      <!-- <div class=""> -->
+        <p><strong>Created by:</strong><br><%= userName %></p>
+        <p><strong>Description:</strong> <br><%= description%></p>
+        <p><strong>Location:</strong> <br><%=location %></p>
+        <p><strong>Link:</strong> <br><%= link %></p>
+
+        <h1>Enter Your details below:</h1>
+      <form class="form" action="/events/<%=gen_id%>/confirm" method="POST">
+        <div >
+          <strong><label for="name"> Name</label></strong>
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+          />
+        </div>
+        <div>
+          <strong><label for="email"> Email</label></strong>
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+          />
+        </div>
+        <h3><strong>Choose A Time Below</strong></h3>
+        <!-- <form action="/action_page.php"> -->
+          <p>Choose date and Time below</p>
+
+        <!-- </form> -->
+        <div>
+          <button type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>
