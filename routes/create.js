@@ -15,29 +15,47 @@ module.exports = (db) => {
       console.log(emailResult)
       //IF THE EMAIL EXISTS THEN DO THIS
       if(emailResult.rows.length > 0){
+        // const start_time ='2022-04-27 10:00:00'
+        // const end_time = '2022-04-27 10:00:00'
+        // const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
+        // const valuesEventTimes = [event_id, start_time, end_time];
+
+        //INSERT THE EVENT
         user = emailResult.rows[0]
         console.log('USER Search +++++++++++++++++++', user)
         const body = req.body;
         const queryString2 = `INSERT INTO events(gen_id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING *;`;
-          //insert event id as random gnerated id
+          //insert random gnerated
           let gen_id = generateRandomId();
           console.log(gen_id);
           // const user_id = 1;
           const values2 = [gen_id, user.id, body.title, body.description];
-          return db
+          db
             .query(queryString2, values2)
             .then(result => {
-              // console.log(result);
-              if (!result) {
-                // console.log("post create result", result);
-                res.send({error: "error"});
-                return;
-              }
-              res.redirect(`/events/${gen_id}`)
+              // console.log("----------Result--------", result)
+              // console.log("----------Eveent_id--------", result.rows[0].id)
+              //INSERT THE EVENT TIMES
+              const event_id = result.rows[0].id;  //event_id
+              //temporary times
+              const start_time ='2022-04-27 10:00:00'
+              const end_time = '2022-04-27 10:00:00'
+              const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
+              const valuesEventTimes = [event_id, start_time, end_time];
+              return db
+              .query(queryEventTimes, valuesEventTimes)
+              .then( result3 => {
+                if (!result3) {
+                  // console.log("post create result", result);
+                  res.send({error: "error"});
+                  return;
+                }
+                res.redirect(`/events/${gen_id}`)
+              })
             })
             .catch(err => console.log(err.message))
       }else{
-        //IF THAT EMAIL DOES NOT EXIST THEN DO THIS
+        //IF THAT EMAIL DOES NOT EXIST THEN INSERRT NEW USER
         const body = req.body;
         const queryString1 = `INSERT INTO users(name, email) VALUES($1, $2) RETURNING *;`;
         const values1 = [body.name, body.email];
@@ -52,9 +70,17 @@ module.exports = (db) => {
             console.log(gen_id);
             // const user_id = 1;
             const values2 = [gen_id, user, body.title, body.description];
-            return db
+            db
               .query(queryString2, values2)
               .then(result => {
+                const event_id = result.rows[0].id;  //event_id
+              const start_time ='2022-04-27 10:00:00'
+              const end_time = '2022-04-27 10:00:00'
+              const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
+              const valuesEventTimes = [event_id, start_time, end_time];
+              return db
+              .query(queryEventTimes, valuesEventTimes)
+              .then( result3 => {
                 // console.log(result);
                 if (!result) {
                   console.log("post create result", result);
@@ -63,6 +89,7 @@ module.exports = (db) => {
                 }
                 res.redirect(`/events/${gen_id}`)
               })
+            })
               .catch(err => console.log(err.message))
           })
       }

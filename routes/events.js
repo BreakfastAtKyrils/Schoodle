@@ -18,16 +18,12 @@ module.exports = (db) => {
         user = emailResult.rows[0]
         console.log('USER Search +++++++++++++++++++', user)
         const body = req.body;
-        //temporary event_time_id & response
+        //temporary event_time_id
         const event_time_id = 1;
+        //temporary response
         const response = true;
         const queryString1 = `INSERT INTO event_attendee_times(user_id, event_time_id, response) VALUES($1, $2, $3) RETURNING *;`;
         const values1 = [user.id, event_time_id, response];
-        // if(response = "yes"){
-        //   return true
-        // }else{
-        //   return false
-        // }
         return db
             .query(queryString1, values1)
             .then(result1 => {
@@ -37,21 +33,27 @@ module.exports = (db) => {
                 res.send({error: "error"});
                 return;
               }
-              res.redirect(`/events/${gen_id}`)
+              res.render('submitted');
             })
             .catch(err => console.log(err.message))
       }else{
-        //IF THAT EMAIL DOES NOT EXIST THEN DO THIS
+        //IF THAT EMAIL DOES NOT EXIST THEN ADD USER
         const body = req.body;
         const queryString2 = `INSERT INTO users(name, email) VALUES($1, $2) RETURNING *;`;
         const values2 = [body.name, body.email];
         db
           .query(queryString2, values2)
           .then(result1 =>{
-            const user = result1.rows[0].id
-            console.log("+++++++++++ USER", user)
+            const user_id = result1.rows[0].id
+            console.log("+++++++++++ USER", user_id)
+            //temporary event_time_id
+            const event_time_id = 201;
+            //temporary response
+            const response = true;
+            const queryString1 = `INSERT INTO event_attendee_times(user_id, event_time_id, response) VALUES($1, $2, $3) RETURNING *;`;
+            const values1 = [user_id, event_time_id, response];
             return db
-              .query(queryString2, values2)
+              .query(queryString1, values1)  //calling query1 and values1 from above
               .then(result => {
                 // console.log(result);
                 if (!result) {
@@ -59,7 +61,7 @@ module.exports = (db) => {
                   res.send({error: "error"});
                   return;
                 }
-                res.redirect(`/events/${gen_id}`)
+                res.render('submitted');
               })
               .catch(err => console.log(err.message))
           })
