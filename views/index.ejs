@@ -35,15 +35,28 @@
     </div>
 
     <!-- <img id="separator" src="/images/separator.png"> -->
+    <form class="form" action="/create" method="POST">
     <section>
       <div id="name">Name</div>
-      <textarea></textarea>
+      <textarea
+      type="text"
+      name="name"
+      style="width: 300px; margin: 1em"></textarea>
       <div id="email">Email</div>
-      <textarea></textarea>
+      <textarea
+      type="text"
+      name="email"
+      style="width: 300px; margin: 1em"></textarea>
       <div id="event-title">Event Title</div>
-      <textarea></textarea>
+      <textarea
+      type="text"
+      name="title"
+      style="width: 300px; margin: 1em"></textarea>
       <div id="description">Description</div>
-      <textarea></textarea>
+      <textarea
+      type="text"
+        name="description"
+        style="width: 300px; margin: 1em"></textarea>
     </section>
 
     <div id="times">
@@ -57,7 +70,8 @@
     </div>
 
     <div id="share">Share with your friends!</div>
-    <button>CREATE EVENT</button>
+    <button type="submit">CREATE EVENT</button>
+  </form>
   </main>
   <main id="attendee-page">
   <section id="event-info">

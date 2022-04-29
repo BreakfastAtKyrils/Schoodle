@@ -12,18 +12,18 @@ module.exports = (db) => {
     db
     .query(`SELECT id FROM users WHERE email = $1;`,[email])
     .then(emailResult =>{
-      // console.log(emailResult)
+      console.log(emailResult)
       //IF THE EMAIL EXISTS THEN DO THIS
       if(emailResult.rows.length > 0){
         user = emailResult.rows[0]
         console.log('USER Search +++++++++++++++++++', user)
         const body = req.body;
-        const queryString2 = `INSERT INTO events(gen_id, user_id, title, description, location, link) VALUES($1, $2, $3, $4, $5, $6) RETURNING *;`;
+        const queryString2 = `INSERT INTO events(gen_id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING *;`;
           //insert event id as random gnerated id
           let gen_id = generateRandomId();
           console.log(gen_id);
           // const user_id = 1;
-          const values2 = [gen_id, user.id, body.title, body.description, body.location, body.link];
+          const values2 = [gen_id, user.id, body.title, body.description];
           return db
             .query(queryString2, values2)
             .then(result => {
@@ -46,12 +46,12 @@ module.exports = (db) => {
           .then(result1 =>{
             const user = result1.rows[0].id
             console.log("+++++++++++ USER", user)
-            const queryString2 = `INSERT INTO events(gen_id, user_id, title, description, location, link) VALUES($1, $2, $3, $4, $5, $6) RETURNING *;`;
+            const queryString2 = `INSERT INTO events(gen_id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING *;`;
             //insert event id as random gnerated id
             let gen_id = generateRandomId();
             console.log(gen_id);
             // const user_id = 1;
-            const values2 = [gen_id, user, body.title, body.description, body.location, body.link];
+            const values2 = [gen_id, user, body.title, body.description];
             return db
               .query(queryString2, values2)
               .then(result => {
@@ -61,7 +61,7 @@ module.exports = (db) => {
                   res.send({error: "error"});
                   return;
                 }
-                res.redirect(`/events/${gen_id}`)
+                res.send(`/events/${gen_id}`)
               })
               .catch(err => console.log(err.message))
           })
