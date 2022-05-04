@@ -1,4 +1,5 @@
-// Client facing scripts here
+
+/*// Client facing scripts here
 $(document).ready(function () {
   //calendar code
   $("#choose-time").flatpickr({
@@ -16,4 +17,14 @@ $(document).ready(function () {
 
 
 
+});
+*/
+
+// Flatpickr.setDefaults({});
+
+flatpickr('#startDate', {
+  enableTime: true,
+  allowInput: true,
+  dateFormat: "m/d/Y h:iK",
+  //plugins: [new rangePlugin({ input: "#endDate"})]
 });

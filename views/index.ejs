@@ -3,7 +3,8 @@
 
 <head>
   <title>Schoodle</title>
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
@@ -65,7 +66,14 @@
     <div id="times">
       <section id="calendar">
         <button class="btn" >Choose your Time & Date</button>
-        <div>Calendar will appear here</div>
+        <div class="datepicker">
+          <div>
+            <input type="text" id="startDate" placeholder="Choose start and end date" class="startDate" required value="" />
+          </div>
+          <div>
+            <input type="text" id="endDate" class="endDate" required>
+          </div>
+        </div>
       </section>
       <section id="meeting-times">
         <p>Possible Meeting Times</p>
