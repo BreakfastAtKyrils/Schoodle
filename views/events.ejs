@@ -21,17 +21,24 @@
 
 <body>
   <%- include('partials/_header'); %>
-  <main>
-    <div><h1><%=title %></h1></div></br></br>
-      <!-- <div class=""> -->
-        <p><strong>Created by:</strong><br><%= userName %></p>
-        <p><strong>Description:</strong> <br><%= description%></p>
-        <p><strong>Location:</strong> <br><%=location %></p>
-        <p><strong>Link:</strong> <br><%= link %></p>
+  <section>
+    <div id="box1">
+      <div id="group-title">
+        <div id="create-group-event"><strong><%=title %></strong></div>
+      </div>
+      <div class="eventDetailsAll">
+        <div class="eventDetail"><strong>Created by:</strong> <div class="highlight"><%= userName %></div></div>
+        <div class="eventDetail"><strong>Description:</strong> <div class="description highlight"><%= description%></div></div>
+        <!-- <p><strong>Location:</strong> <%=location %></p> -->
+        <!-- <p><strong>Link:</strong><%= link %></p> -->
+      </div>
+    </div>
 
-        <h1>Enter Your details below:</h1>
+  </section>
+  <section>
+    <div id="box2">
       <form class="form" action="/events/<%=gen_id%>/confirm" method="POST">
-        <div >
+        <div class="form">
           <strong><label for="name"> Name</label></strong>
           <input
             class="form-control"
@@ -39,7 +46,7 @@
             name="name"
           />
         </div>
-        <div>
+        <div class="form">
           <strong><label for="email"> Email</label></strong>
           <input
             class="form-control"
@@ -47,17 +54,48 @@
             name="email"
           />
         </div>
-        <h3><strong>Choose A Time Below</strong></h3>
-        <!-- <form action="/action_page.php"> -->
-          <p>Choose date and Time below</p>
-
-        <!-- </form> -->
-        <div>
-          <button type="submit">Confirm</button>
+        <div class="lowerForm">
+          <p><strong>When Can You Attend?</strong></p>
+          <section id="meeting-times">
+            <p>Possible Meeting Times</p>
+            <div class="optionAll">
+              <div class="optionStartList">
+                <p>Start</p>
+                  <div class="optionStart">2022-04-26 10:15 AM</div>
+                  <div class="optionStart">2022-04-27 10:15 AM</div>
+                  <div class="optionStart">2022-04-28 10:15 AM</div>
+              </div>
+              <div>
+                <p>End</p>
+                <div class="optionEnd">2022-04-26 11:15 AM</div>
+                <div class="optionEnd">2022-04-27 11:15 AM</div>
+                <div class="optionEnd">2022-04-28 11:15 AM</div>
+              </div>
+              <div>
+                <label for="yes"> Yes</label><br>
+                <input type="radio" id="yes" name="yes" value="true">
+                <label for="yes"></label><br>
+                <input type="radio" id="yes" name="yes" value="true">
+                <label for="yes"></label><br>
+                <input type="radio" id="yes" name="yes" value="true">
+              </div>
+              <div>
+                <label for="no"> No</label><br>
+                <input type="radio" id="no" name="no" value="false">
+                <label for="no"></label><br>
+                <input type="radio" id="no" name="no" value="false">
+                <label for="no"></label><br>
+                <input type="radio" id="no" name="no" value="false">
+              </div>
+          </div>
+          </section>
+          <div>
+            <button class="btn" type="submit">SUBMIT</button>
+          </div>
         </div>
       </form>
     </div>
-  </main>
+  </section>
 </body>
 
 </html>
