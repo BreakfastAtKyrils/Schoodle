@@ -26,5 +26,5 @@ flatpickr('#startDate', {
   enableTime: true,
   allowInput: true,
   dateFormat: "m/d/Y h:iK",
-  //plugins: [new rangePlugin({ input: "#endDate"})]
+  plugins: [new rangePlugin({ input: "#endDate"})]
 });
