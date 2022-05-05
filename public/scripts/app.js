@@ -22,12 +22,45 @@ $(document).ready(function () {
 
 // Flatpickr.setDefaults({})
 $(document).ready(function () {
-  flatpickr('#startDate', {
+  let potential_times = {}
+
+  const $start_date = flatpickr('#startDate', {
   enableTime: true,
   allowInput: true,
   dateFormat: "F, d Y H:i",
+  parseDate: (datestr, format) => {
+    return moment(datestr, format, true).toDate();
+  },
   //plugins: [new rangePlugin({ input: "#endDate"})]
-})
+  })
+
+  const $end_date = flatpickr('#endDate', {
+    enableTime: true,
+    allowInput: true,
+    dateFormat: "F, d Y H:i",
+    parseDate: (datestr, format) => {
+      return moment(datestr, format, true).toDate();
+    },
+    //plugins: [new rangePlugin({ input: "#endDate"})]
+    })
+
+  const $submit_meeting_time = $('#submit-meeting-time')
+  $submit_meeting_time.click(()=> {
+    alert($start_date[0].parseDate)
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
 // alert(date1)
 // const start_date = new Promise((resolve, reject) => {
 //   const date1 = flatpickr('#startDate', {

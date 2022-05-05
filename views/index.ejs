@@ -4,7 +4,7 @@
 <head>
   <title>Schoodle</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
@@ -17,7 +17,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/rangePlugin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- <script type="text/javascript" src="/scripts/rangePlugin.js"></script> -->
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 <body>
@@ -70,7 +71,7 @@
         <div class="datepicker">
           <div>
             <article>
-            <input type="text" id="startDate" placeholder="Choose start and end date" class="startDate" required value="" />
+            <input type="text" id="startDate" placeholder="Choose start date and time" class="startDate" required value="" />
           </div>
           <div>
             <input type="text" id="endDate" class="endDate" required>
@@ -81,29 +82,29 @@
         <div class="datepicker">
           <div>
             <article>
-            <input type="text" id="startDate" placeholder="Choose start and end date" class="startDate" required value="" />
+            <input type="text" id="startDate" placeholder="Choose end date and time" class="startDate" required value="" />
           </div>
           <div>
             <input type="text" id="endDate" class="endDate" required>
           </div>
         </article>
         </div>
-        <button id="submit-meeting-time" class="btn" >Add to Possible Meeting Times</button>
+        <button type="button" id="submit-meeting-time" class="btn" >Add to Possible Meeting Times</button>
       </section>
       <section id="meeting-times">
         <p>Possible Meeting Times</p>
         <div class="optionAll">
           <div class="optionStartList">
             <p>Start</p>
-              <div class="optionStart">2022-04-26 10:15 AM</div>
-              <div class="optionStart">2022-04-27 10:15 AM</div>
-              <div class="optionStart">2022-04-28 10:15 AM</div>
+              <div class="optionStart">placeholder:2022-04-26 10:15 AM</div>
+              <div class="optionStart">placeholder:2022-04-27 10:15 AM</div>
+              <div class="optionStart">placeholder:2022-04-28 10:15 AM</div>
           </div>
           <div>
             <p>End</p>
-            <div class="optionEnd">2022-04-26 11:15 AM</div>
-            <div class="optionEnd">2022-04-27 11:15 AM</div>
-            <div class="optionEnd">2022-04-28 11:15 AM</div>
+            <div class="optionEnd">placeholder: 2022-04-26 11:15 AM</div>
+            <div class="optionEnd">placeholder:2022-04-27 11:15 AM</div>
+            <div class="optionEnd">placeholder:2022-04-28 11:15 AM</div>
           </div>
       </div>
       </section>
