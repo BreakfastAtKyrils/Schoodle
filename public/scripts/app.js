@@ -20,11 +20,11 @@ $(document).ready(function () {
 });
 */
 
-// Flatpickr.setDefaults({});
-
+// Flatpickr.setDefaults({})
+$(document).ready(function () {
 flatpickr('#startDate', {
   enableTime: true,
   allowInput: true,
-  dateFormat: "m/d/Y h:iK",
-  plugins: [new rangePlugin({ input: "#endDate"})]
-});
+  dateFormat: "F, d Y H:i",
+  //plugins: [new rangePlugin({ input: "#endDate"})]
+})})
