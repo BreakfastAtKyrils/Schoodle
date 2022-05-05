@@ -22,31 +22,45 @@ $(document).ready(function () {
 
 // Flatpickr.setDefaults({})
 $(document).ready(function () {
-  let potential_times = {}
+  let potential_times = []
+
+  let startDate = null;
+  let endDate = null;
+
+
+
 
   const $start_date = flatpickr('#startDate', {
   enableTime: true,
+  minDate: 'today',
   allowInput: true,
   dateFormat: "F, d Y H:i",
-  parseDate: (datestr, format) => {
-    return moment(datestr, format, true).toDate();
-  },
-  //plugins: [new rangePlugin({ input: "#endDate"})]
+  onChange: function(selectedDates, dateStr, instance) {
+    startDate = dateStr;
+    console.log('start_date function called')
+  }
   })
 
   const $end_date = flatpickr('#endDate', {
     enableTime: true,
+    minDate: 'today',
     allowInput: true,
     dateFormat: "F, d Y H:i",
-    parseDate: (datestr, format) => {
-      return moment(datestr, format, true).toDate();
-    },
-    //plugins: [new rangePlugin({ input: "#endDate"})]
+    onChange: function(selectedDates, dateStr, instance) {
+      endDate = dateStr;
+    }
     })
 
   const $submit_meeting_time = $('#submit-meeting-time')
-  $submit_meeting_time.click(()=> {
-    alert($start_date[0].parseDate)
+  $submit_meeting_time.click((event)=> {
+    const final_start_date = startDate;
+    const final_end_date = endDate;
+
+    console.log(`Adding the following data: \n
+    startDate --> ${final_start_date} \n
+    endDate --> ${final_end_date}`)
+    potential_times.push([startDate, endDate])
+    console.log(`potential times are now: ${potential_times}`)
 
   })
 
