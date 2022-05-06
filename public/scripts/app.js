@@ -27,6 +27,25 @@ $(document).ready(function () {
   let startDate = null;
   let endDate = null;
 
+  const $meeting_times = $('.optionAll')
+
+  const addMeetingTimes = function(start, end){
+    let $start_time = $('<div class="optionStart">')
+    $start_time.text(start)
+    $('#start-options').append($start_time)
+
+    let $end_time = $('<div class="optionsEnd">')
+    $end_time.text(end)
+    $('#end-options').append($end_time)
+    $end_time.css("font-size", ".8em")
+    $end_time.css("font-weight", "bolder")
+    $end_time.css("color", "black")
+    $end_time.css("margin", "10px 0px 10px 0px")
+    $end_time.css("padding", "7px")
+    $end_time.css("background-color", "white")
+    $end_time.css("border-radius", "10px")
+
+  }
 
 
 
@@ -37,7 +56,6 @@ $(document).ready(function () {
   dateFormat: "F, d Y H:i",
   onChange: function(selectedDates, dateStr, instance) {
     startDate = dateStr;
-    console.log('start_date function called')
   }
   })
 
@@ -52,16 +70,17 @@ $(document).ready(function () {
     })
 
   const $submit_meeting_time = $('#submit-meeting-time')
+
   $submit_meeting_time.click((event)=> {
     const final_start_date = startDate;
     const final_end_date = endDate;
 
-    console.log(`Adding the following data: \n
-    startDate --> ${final_start_date} \n
-    endDate --> ${final_end_date}`)
     potential_times.push([startDate, endDate])
     console.log(`potential times are now: ${potential_times}`)
+    addMeetingTimes(final_start_date, final_end_date)
 
+    //reset calendar
+    //need to add code for this
   })
 
 
