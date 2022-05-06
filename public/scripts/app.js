@@ -89,17 +89,17 @@ $createEvent.click((e) =>{
     $.ajax({
       type: "POST",
       url: "/create",
-      data: { data: potential_times, email: $userEmail, name: $userName,
+      data: { times: potential_times, email: $userEmail, name: $userName,
         title: $eventTitle, description: $eventDescription},
-      dataType: "json",
+      // dataType: "json",
       success: function (data) {
-        // alert("Added Successfully");
         // res.redirect(`/events/${gen_id}`)???
-        console.log("DATA---------------------", data)
-        window.location.href = data.redirect// window.location is url on browser
+        if(data){
+          console.log("DATA---------------------", data)
+          window.location.href = data
+        }// window.location is url on browser
       },
       error: function (err) {
-        console.log("err", err);
         if(err.status === 200){
           window.location.href = err.responseText
         }
@@ -120,6 +120,7 @@ const populateMeetingTimes = function(meetingTimes) {
   $start_time.text(meetingTimes.start)
   $end_time.text(meetingTimes.end)
   $vote_table.append($table_row)
+
 
 }
 test_meeting_times = {

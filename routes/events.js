@@ -75,9 +75,11 @@ module.exports = (db) => {
   router.get("/:gen_id", (req,res)=> {
     let gen_id = req.params.gen_id;
       return db
-        .query(`SELECT * FROM events JOIN users ON users.id = user_id WHERE gen_id = $1;`, [gen_id])
+        .query(`SELECT * FROM events
+        JOIN users ON users.id = user_id
+        WHERE gen_id = $1;`, [gen_id])
         .then(result => {
-          // console.log(result);
+          // console.log('Get Events/:gen_id', result)
           userName = result.rows[0].name
           title = result.rows[0].title
           description = result.rows[0].description

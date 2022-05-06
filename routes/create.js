@@ -8,6 +8,8 @@ module.exports = (db) => {
     //check if exists first (SELECT * FROM users WHERE email = don@gmail.com)
     //check result.rows length, if length is 0 then it doesnt exist
     //if exists(length is > 0), then don't insert, get the ID (user = result1.rows[0]), insert into the event table
+    // let start_time2 = req.body.times[0][0];
+    // console.log("start time 2", start_time2)
     const email = req.body.email;
     let user;
     db
@@ -16,10 +18,6 @@ module.exports = (db) => {
       // console.log(emailResult)
       //IF THE EMAIL EXISTS THEN DO THIS
       if(emailResult.rows.length > 0){
-        // const start_time ='2022-04-27 10:00:00'
-        // const end_time = '2022-04-27 10:00:00'
-        // const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
-        // const valuesEventTimes = [event_id, start_time, end_time];
 
         //INSERT THE EVENT
         user = emailResult.rows[0]
@@ -40,8 +38,8 @@ module.exports = (db) => {
               //INSERT THE EVENT TIMES
               const event_id = result.rows[0].id;  //event_id
               //temporary times
-              const start_time ='2022-04-27 10:00:00'
-              const end_time = '2022-04-27 10:00:00'
+              const start_time = req.body.times[0][0];
+              const end_time = req.body.times[0][1];
               const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
               const valuesEventTimes = [event_id, start_time, end_time];
               return db
@@ -77,8 +75,10 @@ module.exports = (db) => {
               .query(queryString2, values2)
               .then(result => {
                 const event_id = result.rows[0].id;  //event_id
-              const start_time ='2022-04-27 10:00:00'
-              const end_time = '2022-04-27 10:00:00'
+                console.log("req.body.times!!!!!!!!!", req.body.times);
+                const start_time = req.body.times[0][0];
+                const end_time = req.body.times[0][1];
+                ////////////////////
               const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
               const valuesEventTimes = [event_id, start_time, end_time];
               return db
@@ -93,6 +93,7 @@ module.exports = (db) => {
                 console.log("redirecting User did not exist")
                 res.send(`/events/${gen_id}`)
               })
+              //////////////
             })
               .catch(err => console.log(err.message))
           })
