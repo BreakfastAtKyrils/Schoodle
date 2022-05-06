@@ -47,12 +47,13 @@ module.exports = (db) => {
               return db
               .query(queryEventTimes, valuesEventTimes)
               .then( result3 => {
+                // console.log("post create result3", result3);
                 if (!result3) {
-                  // console.log("post create result", result);
                   res.send({error: "error"});
                   return;
                 }
-                res.redirect(`/events/${gen_id}`)
+                console.log("redirecting User exists")
+                res.send(`/events/${gen_id}`)
               })
             })
             .catch(err => console.log(err.message))
@@ -84,12 +85,13 @@ module.exports = (db) => {
               .query(queryEventTimes, valuesEventTimes)
               .then( result3 => {
                 // console.log(result);
-                if (!result) {
-                  // console.log("post create result", result);
+                if (!result3) {
+                  console.log("Error in result3, User did Not Exist", result3);
                   res.send({error: "error"});
                   return;
                 }
-                res.redirect(`/events/${gen_id}`)
+                console.log("redirecting User did not exist")
+                res.send(`/events/${gen_id}`)
               })
             })
               .catch(err => console.log(err.message))
