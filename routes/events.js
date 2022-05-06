@@ -77,7 +77,7 @@ module.exports = (db) => {
       return db
         .query(`SELECT * FROM events JOIN users ON users.id = user_id WHERE gen_id = $1;`, [gen_id])
         .then(result => {
-          console.log(result);
+          // console.log(result);
           userName = result.rows[0].name
           title = result.rows[0].title
           description = result.rows[0].description
