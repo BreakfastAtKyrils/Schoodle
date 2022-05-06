@@ -132,13 +132,20 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "/create",
-      data: { data: potential_times, email: $userEmail, name: $userName, title: $eventTitle, description: $eventDescription},
+      data: { data: potential_times, email: $userEmail, name: $userName,
+        title: $eventTitle, description: $eventDescription},
       dataType: "json",
-      success: function () {
-        alert("Added Successfully");
+      success: function (data) {
+        // alert("Added Successfully");
+        // res.redirect(`/events/${gen_id}`)???
+        console.log("DATA---------------------", data)
+        window.location.href = data.redirect// window.location is url on browser
       },
       error: function (err) {
         console.log("err", err);
+        if(err.status === 200){
+          window.location.href = err.responseText
+        }
       },
     })
   });
