@@ -4,6 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
   //POST /create
   router.post("/", (req,res)=> {
+    console.log("creating an event");
     //check if exists first (SELECT * FROM users WHERE email = don@gmail.com)
     //check result.rows length, if length is 0 then it doesnt exist
     //if exists(length is > 0), then don't insert, get the ID (user = result1.rows[0]), insert into the event table
@@ -12,7 +13,7 @@ module.exports = (db) => {
     db
     .query(`SELECT id FROM users WHERE email = $1;`,[email])
     .then(emailResult =>{
-      console.log(emailResult)
+      // console.log(emailResult)
       //IF THE EMAIL EXISTS THEN DO THIS
       if(emailResult.rows.length > 0){
         // const start_time ='2022-04-27 10:00:00'
@@ -22,12 +23,13 @@ module.exports = (db) => {
 
         //INSERT THE EVENT
         user = emailResult.rows[0]
-        console.log('USER Search +++++++++++++++++++', user)
+        // console.log('USER Search +++++++++++++++++++', user)
         const body = req.body;
+        console.log("BODY++++++++++++++++++++", req.body)
         const queryString2 = `INSERT INTO events(gen_id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING *;`;
           //insert random gnerated
           let gen_id = generateRandomId();
-          console.log(gen_id);
+          // console.log(gen_id);
           // const user_id = 1;
           const values2 = [gen_id, user.id, body.title, body.description];
           db
@@ -63,11 +65,11 @@ module.exports = (db) => {
           .query(queryString1, values1)
           .then(result1 =>{
             const user = result1.rows[0].id
-            console.log("+++++++++++ USER", user)
+            // console.log("+++++++++++ USER", user)
             const queryString2 = `INSERT INTO events(gen_id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING *;`;
             //insert event id as random gnerated id
             let gen_id = generateRandomId();
-            console.log(gen_id);
+            // console.log(gen_id);
             // const user_id = 1;
             const values2 = [gen_id, user, body.title, body.description];
             db
@@ -83,7 +85,7 @@ module.exports = (db) => {
               .then( result3 => {
                 // console.log(result);
                 if (!result) {
-                  console.log("post create result", result);
+                  // console.log("post create result", result);
                   res.send({error: "error"});
                   return;
                 }
