@@ -120,11 +120,15 @@ $(document).ready(function () {
 
   const $createEvent = $("#create-event");
   $createEvent.click((e) =>{
+    let $userEmail = $('#user-email').val()
+    let $userName = $('#user-name').val()
+    let $eventTitle = $('#event-title').val()
+    let $eventDescription = $('#event-description').val()
     e.preventDefault()
     $.ajax({
       type: "POST",
       url: "/create",
-      data: { data: potential_times, email: "me@gmail.com", name:"me", title: "party1", description:"a nice party"},
+      data: { data: potential_times, email: $userEmail, name: $userName, title: $eventTitle, description: $eventDescription},
       dataType: "json",
       success: function () {
         alert("Added Successfully");
