@@ -28,6 +28,7 @@ $(document).ready(function () {
   let endDate = null;
 
   const $meeting_times = $('.optionAll')
+  const $meeting_times_selection = $('vote-table')
 
   const addMeetingTimes = function(start, end){
     let $start_time = $('<div class="optionStart">')
@@ -88,6 +89,28 @@ $(document).ready(function () {
 
     //code for populating the possible meeting times
     //need to know how this will be passed
+
+    //this function will receive an object called meetingTimes
+    //inside the object we have .start, .end, as well as the votes
+    const populateMeetingTimes = function(meetingTimes) {
+      const $table_row = $('<tr>')
+      let $start_time = $('<td class="date-vote">')
+      let $end_time = $('<td class="date-vote">')
+      let $vote_yes = $('<td><input type="radio" name="yes" value="true"></td>')
+      let $vote_no = $('<td><input type="radio" name="no" value="false"></td>')
+      $table_row.append($start_time)
+      $table_row.append($end_time)
+      $table_row.append($vote_yes)
+      $table_row.append($vote_no)
+      $start_time.text(meetingTimes.start)
+      $end_time.text(meetingTimes.end)
+      $meeting_times_selection.append($table_row)
+    }
+    test_meeting_times = {
+      'start': 'START time test',
+      'end': 'END time test',
+    }
+    populateMeetingTimes(test_meeting_times)
 
     //code to grab the attendees votes
     //need to know how you want to receive this
