@@ -35,7 +35,7 @@ main, section {
 
 #meeting-times{
   width: 80%;
-  margin-left: 50px;
+  margin: 10px 10px 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,9 +48,9 @@ main, section {
 #meeting-times p{
   font-weight: bolder;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items:baseline;
+  text-align: center;
 }
 
 .optionAll{
@@ -59,7 +59,7 @@ main, section {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  margin-left: 20px;
+  text-align: center;
 }
 
 .optionsEnd {
@@ -71,6 +71,7 @@ main, section {
   padding: 7px;
   background-color: white;
   border-radius: 10px;
+  text-align: center;
 }
 
 .optionStart {
@@ -82,6 +83,7 @@ main, section {
   padding: 7px;
   background-color: white;
   border-radius: 10px;
+  text-align: center;
 }
 
 .btn{
