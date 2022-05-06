@@ -124,6 +124,10 @@ $(document).ready(function () {
     let $userName = $('#user-name').val()
     let $eventTitle = $('#event-title').val()
     let $eventDescription = $('#event-description').val()
+    console.log('Email  ', $userEmail)
+    console.log('title  ', $eventTitle)
+    console.log('$userName ', $userName)
+    console.log('$eventDescription  ', $eventDescription)
     e.preventDefault()
     $.ajax({
       type: "POST",
