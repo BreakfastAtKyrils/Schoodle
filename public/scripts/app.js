@@ -35,7 +35,7 @@ $(document).ready(function () {
     $start_time.text(start)
     $('#start-options').append($start_time)
 
-    let $end_time = $('<div class="optionsEnd">')
+    let $end_time = $('<div class="optionsEnd" style="margin: 10px 20px;">')
     $end_time.text(end)
     $('#end-options').append($end_time)
     $end_time.css("font-size", ".8em")
