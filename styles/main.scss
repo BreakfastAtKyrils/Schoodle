@@ -35,21 +35,22 @@ main, section {
 
 #meeting-times{
   width: 80%;
-  margin-left: 50px;
+  margin: 10px 10px 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   background-color: #F17896;
-  padding: 0px 5px 13px 5px;
+  padding: 10px 5px 10px 5px;
   color: white;
   border-radius: 20px;
 }
 #meeting-times p{
   font-weight: bolder;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  text-align: center;
 }
 
 .optionAll{
@@ -58,18 +59,31 @@ main, section {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-
+  text-align: center;
 }
 
-.optionStart, .optionEnd{
+.optionsEnd {
   font-size: .8em;
   font-weight: bolder;
   color: black;
   // width: max-content;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 20px !important;
   padding: 7px;
   background-color: white;
   border-radius: 10px;
+  text-align: center;
+}
+
+.optionStart {
+  font-size: .8em;
+  font-weight: bolder;
+  color: black;
+  // width: max-content;
+  margin: 10px 20px;
+  padding: 7px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .btn{
@@ -82,7 +96,10 @@ main, section {
   border-radius: 20px;
   outline: none;
   letter-spacing: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
+
 .btn:hover{
   background-color: rgb(241, 120, 150, 0.3);
 }
@@ -212,6 +229,8 @@ input[type="radio"]{
 
 div.datepicker {
     width: 300px;
+    margin-top: 5px;
+    margin-bottom: 20px;
     display:inline-flex;
     justify-content: start;
     align-items: center;
@@ -220,7 +239,7 @@ div.datepicker {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     border-radius: 4px;
     border: 1px #ccc solid;
-    padding: 0;
+    padding: 2px;
     &:before {
     position: relative;
     display: block;
@@ -321,6 +340,11 @@ div.datepicker {
 // #vote-table {
 //   // align-items: center;
 // }
+
+#vote-table {
+  border-spacing: 0.5em;
+}
+
 #vote-table th {
   width: 10%;
   // justify-content: space-between;
@@ -339,6 +363,16 @@ input[type=radio] {
 }
 
 .date-vote {
-  align-items:center;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  font-size: .8em;
+  font-weight: bolder;
+  color: black;
+  // width: max-content;
+  margin: 10px 0px 10px 0px;
+  padding: 7px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 5px 13px 10px;
 }
