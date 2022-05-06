@@ -1,26 +1,3 @@
-
-/*// Client facing scripts here
-$(document).ready(function () {
-  //calendar code
-  $("#choose-time").flatpickr({
-    enableTime: true,
-    inline: true,
-    //ask mentor about this line
-    // "plugins": [new confirmDatePlugin({})],
-    dateFormat: "F, d Y H:i",
-    // mode: "multiple",
-
-
-  });
-  // instance.config.onChange.push(function() { } );
-
-
-
-
-});
-*/
-
-// Flatpickr.setDefaults({})
 $(document).ready(function () {
   let potential_times = []
 
@@ -28,7 +5,7 @@ $(document).ready(function () {
   let endDate = null;
 
   const $meeting_times = $('.optionAll')
-  const $meeting_times_selection = $('vote-table')
+  const $vote_table = $('#vote-table')
 
   const addMeetingTimes = function(start, end){
     let $start_time = $('<div class="optionStart">')
@@ -47,8 +24,6 @@ $(document).ready(function () {
     $end_time.css("border-radius", "10px")
 
   }
-
-
 
   const $start_date = flatpickr('#startDate', {
   enableTime: true,
@@ -70,13 +45,13 @@ $(document).ready(function () {
     }
     })
 
-  const $submit_meeting_time = $('#submit-meeting-time')
+const $submit_meeting_time = $('#submit-meeting-time')
 
-  $submit_meeting_time.click((event)=> {
+$submit_meeting_time.click((event)=> {
     const final_start_date = startDate;
     const final_end_date = endDate;
 
-    potential_times.push([startDate, endDate, 0, 0])
+    potential_times.push([startDate, endDate])
 
 
 
@@ -92,25 +67,7 @@ $(document).ready(function () {
 
     //this function will receive an object called meetingTimes
     //inside the object we have .start, .end, as well as the votes
-    const populateMeetingTimes = function(meetingTimes) {
-      const $table_row = $('<tr>')
-      let $start_time = $('<td class="date-vote">')
-      let $end_time = $('<td class="date-vote">')
-      let $vote_yes = $('<td><input type="radio" name="yes" value="true"></td>')
-      let $vote_no = $('<td><input type="radio" name="no" value="false"></td>')
-      $table_row.append($start_time)
-      $table_row.append($end_time)
-      $table_row.append($vote_yes)
-      $table_row.append($vote_no)
-      $start_time.text(meetingTimes.start)
-      $end_time.text(meetingTimes.end)
-      $meeting_times_selection.append($table_row)
-    }
-    test_meeting_times = {
-      'start': 'START time test',
-      'end': 'END time test',
-    }
-    populateMeetingTimes(test_meeting_times)
+
 
     //code to grab the attendees votes
     //need to know how you want to receive this
@@ -118,8 +75,8 @@ $(document).ready(function () {
     //if a user votes for yes --> change the array [start, date, +1, 0]
   })
 
-  const $createEvent = $("#create-event");
-  $createEvent.click((e) =>{
+const $createEvent = $("#create-event");
+$createEvent.click((e) =>{
     let $userEmail = $('#user-email').val()
     let $userName = $('#user-name').val()
     let $eventTitle = $('#event-title').val()
@@ -141,7 +98,29 @@ $(document).ready(function () {
         console.log("err", err);
       },
     })
-  });
+});
+
+const populateMeetingTimes = function(meetingTimes) {
+  const $table_row = $('<tr>')
+  let $start_time = $('<td class="date-vote">')
+  let $end_time = $('<td class="date-vote">')
+  let $vote_yes = $('<td><input type="radio" name="radio" value="true"></td>')
+  let $vote_no = $('<td><input type="radio" name="radio" value="false"></td>')
+  $table_row.append($start_time)
+  $table_row.append($end_time)
+  $table_row.append($vote_yes)
+  $table_row.append($vote_no)
+  $start_time.text(meetingTimes.start)
+  $end_time.text(meetingTimes.end)
+  $vote_table.append($table_row)
+
+}
+test_meeting_times = {
+  'start': 'START time test',
+  'end': 'END time test',
+}
+// console.log(test_meeting_times.start)
+populateMeetingTimes(test_meeting_times)
 
 
 
@@ -151,21 +130,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-// alert(date1)
-// const start_date = new Promise((resolve, reject) => {
-//   const date1 = flatpickr('#startDate', {
-//     enableTime: true,
-//     allowInput: true,
-//     dateFormat: "F, d Y H:i",
-//     //plugins: [new rangePlugin({ input: "#endDate"})]
-//   })
-//   resolve(date1)
-// }).then((date1) => {
-//   alert(date1)
-// })
 
 
 })
