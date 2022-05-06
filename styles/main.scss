@@ -289,3 +289,23 @@ border: 1px #ccc solid;
     display: none;
   }
 }
+
+#column-names {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#column-names p {
+  justify-content: space-between;
+}
+
+#attendee-answers {
+  width: 90%;
+}
+#event-answer{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  align-items: center;
+}
