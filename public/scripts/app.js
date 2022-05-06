@@ -75,12 +75,24 @@ $(document).ready(function () {
     const final_start_date = startDate;
     const final_end_date = endDate;
 
-    potential_times.push([startDate, endDate])
+    potential_times.push([startDate, endDate, 0, 0])
+
+
+
+
     console.log(`potential times are now: ${potential_times}`)
     addMeetingTimes(final_start_date, final_end_date)
 
     //reset calendar
     //need to add code for this
+
+    //code for populating the possible meeting times
+    //need to know how this will be passed
+
+    //code to grab the attendees votes
+    //need to know how you want to receive this
+
+    //if a user votes for yes --> change the array [start, date, +1, 0]
   })
 
 
