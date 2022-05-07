@@ -8,7 +8,14 @@ module.exports = (db) => {
     //insert into users if doesnt exist(name & email)
     const email = req.body.email;
     const gen_id = req.params.gen_id;
+    const votes = req.body.vote
+    for (let singleVote of vote) {
+      const updateVotesQuery = `UPDATE event_times SET vote=$1  WHERE id=$2;`;
+    }
+
     let user;
+    //console.log('req.body => ', req.body)
+    //return { db: db, array: array}
     return db
     .query(`SELECT id FROM users WHERE email = $1;`,[email])
     .then(emailResult =>{
@@ -118,7 +125,7 @@ module.exports = (db) => {
           templateVars['events'] = event_data
           // const event_id = event_data[0].event_id;
           console.log('event data:    ', event_data)
-          console.log('templateVars:    ', templateVars)
+          // console.log('templateVars:    ', templateVars)
           // console.log('id:    ', event_id)
           res.render('events', templateVars);
           })

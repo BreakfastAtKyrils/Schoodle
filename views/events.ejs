@@ -63,7 +63,7 @@
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Yes</th>
-                <th>No</th>
+                <!-- <th>No</th> -->
                 <th>Votes</th>
               </tr>
               <% let counter = 0 %>
@@ -73,12 +73,12 @@
                   <% let input2 = `radio${counter}` %>
                   <td class="date-vote"><%= event.start_time %></td>
                   <td class="date-vote"><%= event.end_time %></td>
-                  <td><input type="radio" class="yes" name="<%=input1%>" value="true"></td>
-                  <td><input type="radio" class="no" name="<%=input2%>" value="false"></td>
+                  <td><input type="checkbox" class="yes" name="vote[]" value="<%= event.id %>"></td>
+                  <!-- <td><input type="radio" class="no" name="<%=input2%>" value="false"></td> -->
                   <% counter++ %>
               </tr>
               <% } %>
-
+              <!-- <input type=“hidden” id=“custId” name=“custId” value=“3487"> -->
               <!-- <tr>
 
                 <td class="date-vote">May 20, 2010, 13:45</td>

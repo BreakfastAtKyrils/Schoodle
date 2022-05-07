@@ -90,26 +90,29 @@ $createEvent.click((e) =>{
 });
 
 
-const populateMeetingTimes = function(meetingTimes) {
-  // let number_of_votes = `<div data-time-id=${id} data-event-id=${event_id}><p>start time: ${start_time}</p><p>end time: ${end_time}</p></div>`
 
 
 
-  const $table_row = $('<tr>')
-  let $start_time = $('<td class="date-vote">')
-  let $end_time = $('<td class="date-vote">')
-  let $vote_yes = $('<td><input type="radio" name="radio" value="true"></td>')
-  let $vote_no = $('<td><input type="radio" name="radio" value="false"></td>')
-  $table_row.append($start_time)
-  $table_row.append($end_time)
-  $table_row.append($vote_yes)
-  $table_row.append($vote_no)
-  $start_time.text(meetingTimes.start)
-  $end_time.text(meetingTimes.end)
-  $vote_table.append($table_row)
+// const populateMeetingTimes = function(meetingTimes) {
+//   // let number_of_votes = `<div data-time-id=${id} data-event-id=${event_id}><p>start time: ${start_time}</p><p>end time: ${end_time}</p></div>`
 
 
-}
+
+//   const $table_row = $('<tr>')
+//   let $start_time = $('<td class="date-vote">')
+//   let $end_time = $('<td class="date-vote">')
+//   let $vote_yes = $('<td><input type="radio" name="radio" value="true"></td>')
+//   let $vote_no = $('<td><input type="radio" name="radio" value="false"></td>')
+//   $table_row.append($start_time)
+//   $table_row.append($end_time)
+//   $table_row.append($vote_yes)
+//   $table_row.append($vote_no)
+//   $start_time.text(meetingTimes.start)
+//   $end_time.text(meetingTimes.end)
+//   $vote_table.append($table_row)
+
+
+// }
 /*test_meeting_times = {
   'start': 'START time test',
   'end': 'END time test',
