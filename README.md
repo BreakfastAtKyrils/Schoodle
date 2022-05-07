@@ -9,7 +9,7 @@ Well, struggle no more, because we have the app for you - SCHOODLE!
 Schoodle is an event coordination app that allow you to create as many events as you like with your available times.
 You can then share the event link with your friends/event attendees, and they can vote on what time works best! 
 
-No user accounts are needed. That being said, the app tracks all users and events, enable for the same user to make multiple events and for votes to be properly calculated.
+No user accounts are needed. That being said, the app tracks all users and events, enabling for the same user to make multiple events and for votes to be properly calculated.
 
 ## Group Members
 
@@ -19,7 +19,7 @@ No user accounts are needed. That being said, the app tracks all users and event
 
 ## Final Product
 
-Creat Your Event!
+Creat your event!
 !["Create Page"](https://github.com/BreakfastAtKyrils/Schoodle/blob/master/docs/CreateEvent.gif)
 
 Vote for which time works best!
