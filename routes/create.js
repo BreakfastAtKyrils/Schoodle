@@ -102,18 +102,18 @@ module.exports = (db) => {
                 } else {
                   let space = [];
                   for (let i=0; i < times.length; i++) {
-                    console.log(times[i]);
+                    // console.log(times[i]);
                     const start_time = times[i][0];
                     const end_time = times[i][1];
                     const valuesEventTimes = [event_id, start_time, end_time];
                     space.push(valuesEventTimes);
                   }
-                  console.log(space);
+                  // console.log(space);
                   const queryEventTimes = format(`INSERT INTO event_times(event_id, start_time, end_time) VALUES %L`, space);
                   return db
                   .query(queryEventTimes)
                   .then( result3 => {
-                    console.log(result3);
+                    // console.log('FIRE!    ', result3);
                     if (!result3) {
                       console.log("Error in result3, User did Not Exist", result3);
                       res.send({error: "error"});

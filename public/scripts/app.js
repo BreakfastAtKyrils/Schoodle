@@ -109,6 +109,10 @@ $createEvent.click((e) =>{
 
 
 const populateMeetingTimes = function(meetingTimes) {
+  let number_of_votes = `<div data-time-id=${id} data-event-id=${event_id}><p>start time: ${start_time}</p><p>end time: ${end_time}</p></div>`
+
+
+
   const $table_row = $('<tr>')
   let $start_time = $('<td class="date-vote">')
   let $end_time = $('<td class="date-vote">')

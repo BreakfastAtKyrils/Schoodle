@@ -80,30 +80,56 @@ module.exports = (db) => {
         WHERE gen_id = $1;`, [gen_id])
         .then(result => {
           // console.log('Get Events/:gen_id', result)
-          // console.log(result)
+          console.log(result.rows)
           userName = result.rows[0].name
           title = result.rows[0].title
           description = result.rows[0].description
           location = result.rows[0].location
           link = result.rows[0].link
           gen_id = req.params.gen_id
+          event_id = result.rows[0].id
           const templateVars = {
             "userName": userName,
             "title": title,
             "description": description,
             "location": location,
             "link": link,
-            "gen_id": gen_id
+            "gen_id": gen_id,
+            "event_id": event_id,
           };
           if (!result) {
             console.log("events result", result);
             res.send({error: "error"});
             return;
           }
-          res.render(`events`, templateVars);
+
+          return templateVars
+        })
+        .then((data) => {
+          //console.log(data)
+          return {info: db.query(`SELECT * FROM event_times WHERE event_id = $1;`, [data.event_id]), data}
+        })
+        .then((data) => {
+          console.log(data)
+          data.info.then((event) => {
+          // console.log(data.rows[0])
+          const event_data = event.rows;
+          const templateVars = data.data
+          templateVars['events'] = event_data
+          // const event_id = event_data[0].event_id;
+          console.log('event data:    ', event_data)
+          console.log('templateVars:    ', templateVars)
+          // console.log('id:    ', event_id)
+          res.render('events', templateVars);
+          })
+
         })
         .catch(err => console.log(err.message))
   });
+
+  // router.get("/api/:id", (req, res) => {
+
+  // })
 
   //GET /events
   router.get("/", (req, res) => {
