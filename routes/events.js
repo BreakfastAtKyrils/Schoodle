@@ -8,10 +8,15 @@ module.exports = (db) => {
     //insert into users if doesnt exist(name & email)
     const email = req.body.email;
     const gen_id = req.params.gen_id;
-    const votes = req.body.vote
-    for (let singleVote of vote) {
-      const updateVotesQuery = `UPDATE event_times SET vote=$1  WHERE id=$2;`;
+    const votes = req.body.vote;
+    console.log("IM HEREEEEE");
+    console.log(votes);
+    for (let singleVote of votes) {
+      const updateVotesQuery = `UPDATE event_times SET vote = vote + 1  WHERE id=$1;`;
+      const idVoteArray =[singleVote]
+      db.query(updateVotesQuery, idVoteArray);
     }
+    res.render('submitted')
 
     let user;
     //console.log('req.body => ', req.body)
