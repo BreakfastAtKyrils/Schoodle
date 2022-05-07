@@ -16,8 +16,8 @@ module.exports = (db) => {
       const idVoteArray =[singleVote]
       db.query(updateVotesQuery, idVoteArray);
     }
-    res.render('submitted')
-
+    res.render('submitted');
+    console.log("WENT PAST")
     let user;
     //console.log('req.body => ', req.body)
     //return { db: db, array: array}
@@ -126,6 +126,19 @@ module.exports = (db) => {
           data.info.then((event) => {
           // console.log(data.rows[0])
           const event_data = event.rows;
+          for (let x = 0; x < event_data.length; x++) {
+            //console.log('!!!!!', time.start_time)
+            const stringed = JSON.stringify(event_data[x].start_time)
+            newStr = stringed.slice(1, -6)
+            console.log(newStr.replace('T', ' '))
+            const finalStr = newStr.replace('T', ' ')
+            event_data[x].start_time = finalStr
+            const stringed1 = JSON.stringify(event_data[x].end_time)
+            newStr1 = stringed1.slice(1, -6)
+            console.log(newStr1.replace('T', ' '))
+            const finalStr1 = newStr1.replace('T', ' ')
+            event_data[x].end_time = finalStr1
+          }
           const templateVars = data.data
           templateVars['events'] = event_data
           // const event_id = event_data[0].event_id;
