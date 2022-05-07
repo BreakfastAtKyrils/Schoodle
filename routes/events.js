@@ -80,6 +80,7 @@ module.exports = (db) => {
         WHERE gen_id = $1;`, [gen_id])
         .then(result => {
           // console.log('Get Events/:gen_id', result)
+          // console.log(result)
           userName = result.rows[0].name
           title = result.rows[0].title
           description = result.rows[0].description

@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+const format = require("pg-format");
 
 module.exports = (db) => {
   //POST /create
@@ -37,6 +38,7 @@ module.exports = (db) => {
               // console.log("----------Eveent_id--------", result.rows[0].id)
               //INSERT THE EVENT TIMES
               const event_id = result.rows[0].id;  //event_id
+
               //temporary times
               const start_time = req.body.times[0][0];
               const end_time = req.body.times[0][1];
@@ -76,7 +78,11 @@ module.exports = (db) => {
               .then(result => {
                 const event_id = result.rows[0].id;  //event_id
                 console.log("req.body.times!!!!!!!!!", req.body.times);
-                const start_time = req.body.times[0][0];
+                console.log(event_id);
+                const times = req.body.times;
+                console.log(times.length);
+                if (times.length <= 1) {
+                  const start_time = req.body.times[0][0];
                 const end_time = req.body.times[0][1];
                 ////////////////////
               const queryEventTimes = `INSERT INTO event_times(event_id, start_time, end_time) VALUES($1,$2,$3) RETURNING *;`;
@@ -92,13 +98,35 @@ module.exports = (db) => {
                 }
                 console.log("redirecting User did not exist")
                 res.send(`/events/${gen_id}`)
-              })
+              }).catch(err => console.log(err.message))
+                } else {
+                  let space = [];
+                  for (let i=0; i < times.length; i++) {
+                    console.log(times[i]);
+                    const start_time = times[i][0];
+                    const end_time = times[i][1];
+                    const valuesEventTimes = [event_id, start_time, end_time];
+                    space.push(valuesEventTimes);
+                  }
+                  console.log(space);
+                  const queryEventTimes = format(`INSERT INTO event_times(event_id, start_time, end_time) VALUES %L`, space);
+                  return db
+                  .query(queryEventTimes)
+                  .then( result3 => {
+                    console.log(result3);
+                    if (!result3) {
+                      console.log("Error in result3, User did Not Exist", result3);
+                      res.send({error: "error"});
+                      return;
+                    }
+                    console.log("redirecting User did not exist")
+                    res.send(`/events/${gen_id}`)
+                  }).catch(err => console.log(err.message))
+                }
               //////////////
             })
-              .catch(err => console.log(err.message))
           })
       }
-
     })
     .catch(err => console.log(err.message))
 

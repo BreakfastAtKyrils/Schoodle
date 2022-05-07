@@ -107,6 +107,7 @@ $createEvent.click((e) =>{
     })
 });
 
+
 const populateMeetingTimes = function(meetingTimes) {
   const $table_row = $('<tr>')
   let $start_time = $('<td class="date-vote">')
@@ -123,12 +124,14 @@ const populateMeetingTimes = function(meetingTimes) {
 
 
 }
-test_meeting_times = {
+/*test_meeting_times = {
   'start': 'START time test',
   'end': 'END time test',
 }
+*/
+
 // console.log(test_meeting_times.start)
-populateMeetingTimes(test_meeting_times)
+// populateMeetingTimes(test_meeting_times)
 
 
 
