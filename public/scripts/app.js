@@ -7,7 +7,9 @@ $(document).ready(function () {
   const $meeting_times = $('.optionAll')
   const $vote_table = $('#vote-table')
 
-  const addMeetingTimes = function(start, end){
+  // console.log(templateVars)
+
+const addMeetingTimes = function(start, end){
     let $start_time = $('<div class="optionStart">')
     $start_time.text(start)
     $('#start-options').append($start_time)
@@ -23,9 +25,9 @@ $(document).ready(function () {
     $end_time.css("background-color", "white")
     $end_time.css("border-radius", "10px")
 
-  }
+}
 
-  const $start_date = flatpickr('#startDate', {
+const $start_date = flatpickr('#startDate', {
   enableTime: true,
   minDate: 'today',
   allowInput: true,
@@ -33,9 +35,9 @@ $(document).ready(function () {
   onChange: function(selectedDates, dateStr, instance) {
     startDate = dateStr;
   }
-  })
+})
 
-  const $end_date = flatpickr('#endDate', {
+const $end_date = flatpickr('#endDate', {
     enableTime: true,
     minDate: 'today',
     allowInput: true,
@@ -43,37 +45,17 @@ $(document).ready(function () {
     onChange: function(selectedDates, dateStr, instance) {
       endDate = dateStr;
     }
-    })
+})
 
 const $submit_meeting_time = $('#submit-meeting-time')
-
 $submit_meeting_time.click((event)=> {
     const final_start_date = startDate;
     const final_end_date = endDate;
 
     potential_times.push([startDate, endDate])
-
-
-
-
-    console.log(`potential times are now: ${potential_times}`)
+    //console.log(`potential times are now: ${potential_times}`)
     addMeetingTimes(final_start_date, final_end_date)
-
-    //reset calendar
-    //need to add code for this
-
-    //code for populating the possible meeting times
-    //need to know how this will be passed
-
-    //this function will receive an object called meetingTimes
-    //inside the object we have .start, .end, as well as the votes
-
-
-    //code to grab the attendees votes
-    //need to know how you want to receive this
-
-    //if a user votes for yes --> change the array [start, date, +1, 0]
-  })
+})
 
 const $createEvent = $("#create-event");
 $createEvent.click((e) =>{
@@ -95,7 +77,7 @@ $createEvent.click((e) =>{
       success: function (data) {
         // res.redirect(`/events/${gen_id}`)???
         if(data){
-          console.log("DATA---------------------", data)
+          //console.log("DATA---------------------", data)
           window.location.href = data
         }// window.location is url on browser
       },
@@ -109,7 +91,7 @@ $createEvent.click((e) =>{
 
 
 const populateMeetingTimes = function(meetingTimes) {
-  let number_of_votes = `<div data-time-id=${id} data-event-id=${event_id}><p>start time: ${start_time}</p><p>end time: ${end_time}</p></div>`
+  // let number_of_votes = `<div data-time-id=${id} data-event-id=${event_id}><p>start time: ${start_time}</p><p>end time: ${end_time}</p></div>`
 
 
 

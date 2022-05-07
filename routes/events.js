@@ -110,7 +110,7 @@ module.exports = (db) => {
           return {info: db.query(`SELECT * FROM event_times WHERE event_id = $1;`, [data.event_id]), data}
         })
         .then((data) => {
-          console.log(data)
+          //console.log(data)
           data.info.then((event) => {
           // console.log(data.rows[0])
           const event_data = event.rows;
@@ -133,6 +133,7 @@ module.exports = (db) => {
 
   //GET /events
   router.get("/", (req, res) => {
+
     res.render('events');
   });
 

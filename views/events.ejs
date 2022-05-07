@@ -66,7 +66,21 @@
                 <th>No</th>
                 <th>Votes</th>
               </tr>
+              <% let counter = 0 %>
+              <% for (let event of events) { %>
+              <tr>
+                  <% let input1 = `radio${counter}` %>
+                  <% let input2 = `radio${counter}` %>
+                  <td class="date-vote"><%= event.start_time %></td>
+                  <td class="date-vote"><%= event.end_time %></td>
+                  <td><input type="radio" class="yes" name="<%=input1%>" value="true"></td>
+                  <td><input type="radio" class="no" name="<%=input2%>" value="false"></td>
+                  <% counter++ %>
+              </tr>
+              <% } %>
+
               <!-- <tr>
+
                 <td class="date-vote">May 20, 2010, 13:45</td>
                 <td class="date-vote">May 20, 2010, 14:45</td>
                 <td><input type="radio" id="yes" name="radio1" value="true"></td>
